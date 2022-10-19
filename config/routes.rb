@@ -13,5 +13,25 @@ Rails.application.routes.draw do
     sessions: "admin/sessions"
   }
   
+  
+  namespace :public do
+    root to: "public#homes#top"
+    get "/about" =>"public#homes#about"
+    resources :items
+    resources :customers
+    resources :cart_items
+    resources :orders
+    resources :addresses
+  end
+  
+  namespace :admin do
+    resources :homes
+    resources :items
+    resources :genres
+    resources :customers
+    resources :orders
+  end
+  
+  
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
