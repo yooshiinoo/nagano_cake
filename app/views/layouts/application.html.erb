@@ -45,27 +45,7 @@
                   ログアウト
                   <% end %>
                 </li>
-              <% elsif public_signed_in? %>
-                <li>
-                  <%= link_to public_customer_path(current_user), class: "nav-link text-light" do %>
-                  マイページ
-                  <% end %>
-                </li>
-                <li>
-                  <%= link_to public_items_path, class: "nav-link text-light" do %>
-                  商品一覧
-                  <% end %>
-                </li>
-                <li>
-                  <%= link_to public_cart_items_path(current_user), class: "nav-link text-light" do %>
-                  カート
-                  <% end %>
-                </li>
-                <li>
-                  <%= link_to destroy_customer_session_path, method: :delete, class:"nav-link text-light" do %>
-                  ログアウト
-                  <% end %>
-                </li>
+              
               <% else %>
               　<li>
                   <%= link_to public_about_path, class:"nav-link text-light" do %>
@@ -95,8 +75,8 @@
     </header>
     <%= yield %>
     <footer>
-      <div class="row">
-
+      <div class="container">
+        
       </div>
     </footer>
   </body>
