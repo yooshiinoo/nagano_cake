@@ -21,14 +21,13 @@ class Admin::GenresController < ApplicationController
   def update
     @genre = Genre.find(params[:id])
     if @genre.update(genre_params)
-      redirect_to admin_genres_path
+      redirect_to admin_genres_path(@genre)
     else
       render :index
     end
   end
 
-   private
-  # ストロングパラメータ
+  private
   def genre_params
     params.require(:genre).permit(:name)
   end
