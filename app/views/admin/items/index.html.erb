@@ -1,4 +1,4 @@
-<div class="container px-5 px-sm-0">
+<div class="container">
   <div class="row">
     <h2>商品一覧</h2>
       <%= link_to new_admin_item_path, class: "nav-link text-light" do %>
@@ -19,8 +19,8 @@
           <tr>
             <td><%= item.id %></td>
             <td>
-              <%= link_to admin_items_path, class: "nav-link text-light" do %>
-                商品一覧
+              <%= link_to admin_item_path(@items), class: "nav-link text-light" do %>
+                <%= item.name %>
               <% end %>
             </td>
             <td><%= item.price %></td>
