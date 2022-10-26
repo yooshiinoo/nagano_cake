@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <script src="https://kit.fontawesome.com/20c1341cb6.js" crossorigin="anonymous"></script>
     <title>NaganoCake</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
@@ -45,7 +46,7 @@
                   ログアウト
                   <% end %>
                 </li>
-              
+
               <% else %>
               　<li>
                   <%= link_to public_about_path, class:"nav-link text-light" do %>
@@ -76,7 +77,7 @@
     <%= yield %>
     <footer>
       <div class="container">
-        
+
       </div>
     </footer>
   </body>
