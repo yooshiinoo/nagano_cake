@@ -5,50 +5,46 @@
       <div class="form-group">
         <tr>
           <th><%= f.label "商品画像" %></th>
-          <th><%= f.file_field :image, placeholder: "image", accept: "image/*" %></th>
+          <td><%= f.file_field :image, placeholder: "image", accept: "image/*" %></td>
         </tr>
       </div>
       <div class="form-group">
         <tr>
           <th><%= f.label "商品名" %></th>
-          <th><%= f.text_field :name, autofocus: true, placeholder:"商品名"%></th>
+          <td><%= f.text_field :name, autofocus: true, placeholder:"商品名"%></td>
         </tr>
       </div>
       <div class="form-group">
         <tr>
           <th><%= f.label "商品説明" %></th>
-          <th><%= f.text_field :introduction, autofocus: true, placeholder:"ここに説明文を記述します"%></th>
+          <td><%= f.text_field :introduction, autofocus: true, placeholder:"ここに説明文を記述します"%></td>
         </tr>
       </div>
       <div class="form-group">
         <tr>
           <th><%= f.label "ジャンル" %></th>
-          <th><%= f.collection_select :genre_id, Genre.all, :id, :name, :prompt => "--選択してください--" %></th>
+          <td><%= f.collection_select :genre_id, Genre.all, :id, :name, :prompt => "--選択してください--" %></td>
         </tr>
       </div>
       <div class="form-group">
         <tr>
           <th><%= f.label "税抜価格" %></th>
-          <th><%= f.text_field :price, placeholder:"1000"%>円</th>
+          <td><%= f.text_field :price, placeholder:"1000"%>円</td>
         </tr>
       </div>
       <div class="form-group">
         <tr>
           <th><%= f.label "販売ステータス" %></th>
-          <th>
+          <td>
             <%= f.radio_button :is_active, true, checked: true %>
             <%= f.label :is_active, "販売中" %>
             <%= f.radio_button :is_active, false %>
             <%= f.label :is_active, "販売停止中" %>
-          </th>
+          </td>
         </tr>
       </div>
       <div class="form-group">
-        <tr>
-          <th>
-            <input type="submit" name="commit" value="新規登録" class="btn btn-success" data-disable-with="新規登録">
-          </th>
-        </tr>
+        <input type="submit" name="commit" value="新規登録" class="btn btn-success" data-disable-with="新規登録">
       </div>
     <% end %>
   </div>
