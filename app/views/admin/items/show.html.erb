@@ -8,32 +8,32 @@
       <table class="table">
         <tr>
           <th>商品名</th>
-          <th><%= @item.name %></th>
+          <td><%= @item.name %></td>
         </tr>
         <tr>
           <th>商品説明</th>
-          <th><%= @item.introduction %></th>
+          <td><%= @item.introduction %></td>
         </tr>
         <tr>
           <th>ジャンル</th>
-          <th><%= @item.genre.name %></th>
+          <td><%= @item.genre.name %></td>
         </tr>
         <tr>
-          <th>税込価格<br>(税抜価格)</th>
-          <th>
-              <%= (@item.price * 1.1).floor %>
+          <th>税込価格<br>(税抜価格)</td>
+          <td>
+              <%= @item.with_tax_price %>
               ( <%=@item.price %> )円
-          </th>
+          </td>
         </tr>
         <tr>
           <th>販売ステータス</th>
-          <th>
+          <td>
             <% if @item.is_active == true %>
               <p class="text-success">販売中</p>
             <% else %>
               <p class="text-secondary">販売停止中</p>
             <% end %>
-          </th>
+          </td>
         </tr>
       </table>
       <%= link_to "編集する", edit_admin_item_path(@item), class:"btn btn-sm btn-success" %>
