@@ -32,9 +32,11 @@
       <table class="table">
         <% @items.each do |item| %>
           <td>
-            <%= image_tag item.image, size: "200x150" %><br>
-            <%= item.name %><br>
-            ￥<%= item.with_tax_price %><br>
+            <%= link_to public_item_path(@items), class: "nav-link text-dark" do %>
+              <%= image_tag item.image, size: "200x150" %><br>
+              <%= item.name %><br>
+              ￥<%= item.with_tax_price %><br>
+            <% end %>
           </td>
         <% end %>
       </table>
