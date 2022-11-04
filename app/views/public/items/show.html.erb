@@ -1,2 +1,28 @@
-<h1>Public::Items#show</h1>
-<p>Find me in app/views/public/items/show.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+      <table class="table">
+        <tr>
+          <th>ジャンル検索</th>
+        </tr>
+        <% @guides.each do |guide| %>
+          <tr>
+            <td>
+              <%= link_to public_items_path(@item), class: "nav-link text-dark" do %>
+                <%= guide.name %>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </table>
+    </div>
+    <div class="col-md-8">
+      <%= image_tag item.image, size: "300x250" %>
+      <table class="table">
+        <tr><%= @item.name %></tr>
+        <tr><%= @item.introduction %></tr>
+        <tr>￥<%= @item.with_tax_price %><p>(税込)</p></tr>
+      </table>
+    </div>
+  </div>
+</div>
