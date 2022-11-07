@@ -16,12 +16,22 @@
         <% end %>
       </table>
     </div>
-    <div class="col-md-8">
-      <%= image_tag item.image, size: "300x250" %>
-      <table class="table">
-        <tr><%= @item.name %></tr>
-        <tr><%= @item.introduction %></tr>
-        <tr>￥<%= @item.with_tax_price %><p>(税込)</p></tr>
+    <div class="col-md-4">
+      <%= image_tag @item.image, size: "300x250" %>
+    </div>
+    <div class="col-md-4">
+      <h4><%= @item.name %></h4>
+      <p><%= @item.introduction %></p>
+      <tr>
+        <h4>￥<%= @item.with_tax_price %></h4><p>(税込)</p>
+      </tr>
+        <tr>
+          <%= form_with model:@cart_item, url:public_cart_items_path, method: :post do |f| %>
+            <%= f.hidden_field :item_id, value: @item.id %>
+            <%= f.select :amount, *[1..10], :prompt => "個数選択" %>
+            <%= f.submit "カートに入れる", class: "btn btn-success" %>
+          <% end %>
+        </tr>
       </table>
     </div>
   </div>
