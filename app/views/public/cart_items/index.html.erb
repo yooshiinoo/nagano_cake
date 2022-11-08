@@ -13,7 +13,25 @@
           </tr>
         </thead>
         <tbody>
-
+          <%= @cart_items.each do |cart_item| %>
+            <tr>
+              <td>
+                <%= image_tag cart_item.item.image, size: "15x10" %>
+                <%= cart_item.item.name %>
+              </td>
+              <td>
+                <%= cart_item.item.with_tax_price %>
+              </td>
+              <td>
+                <%= form_with model:@cart_item, url:public_cart_item_path(current_customer), method: :post do |f| %>
+                  <%= f.hidden_field :item_id, value: @item.id %>
+                  <%= f.select :amount, *[1..10], :prompt => @item.amount %>
+                  <%= f.submit "変更", class: "btn btn-success" %>
+                <% end %>
+              </td>
+              <td><%= cart_item.subtotal%></td>
+            </tr>
+          <% end %>
         </tbody>
       </table>
     </div>
