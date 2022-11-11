@@ -26,10 +26,12 @@
         <h4>￥<%= @item.with_tax_price %></h4><p>(税込)</p>
       </tr>
         <tr>
-          <%= form_with model:@cart_item, url:public_cart_items_path, method: :post do |f| %>
-            <%= f.hidden_field :item_id, value: @item.id %>
-            <%= f.select :amount, *[1..10], :prompt => "個数選択" %>
-            <%= f.submit "カートに入れる", class: "btn btn-success" %>
+          <% if customer_signed_in? %>
+            <%= form_with model:@cart_item, url:public_cart_items_path, method: :post do |f| %>
+              <%= f.hidden_field :item_id, value: @item.id %>
+              <%= f.select :amount, *[1..10], :prompt => "個数選択" %>
+              <%= f.submit "カートに入れる", class: "btn btn-success" %>
+            <% end %>
           <% end %>
         </tr>
       </table>
