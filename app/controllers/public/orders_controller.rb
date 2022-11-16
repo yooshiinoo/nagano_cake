@@ -1,15 +1,39 @@
 class Public::OrdersController < ApplicationController
   def new
     @order = Order.new
+    @customer = Customer.all
+    @addresses = current_customer.addresses
+    @address = current_customer.address
   end
 
-  def index
-  end
+  def confirm
+    @cart_item = current_customer.cart_item
+    @total = 0
+    @order = Order.new(
+      customer: current_customer,
+      payment_method: params[:order][:payment_method])
 
-  def show
   end
 
   def complete
+  end
+
+  def index
+    @orders = current_customer.orders
+  end
+
+  def show
+    @order = Order.find(params[:id])
+    @order_details = @order.order_details
+  end
+
+  def create
+  end
+
+
+
+  def total_payment
+    @total + @order.shipping_cost
   end
 
   private
