@@ -9,7 +9,7 @@
       </p>
       <tr>
         <%= link_to "退会しない", public_customers_my_page_path(current_customer), class:"btn btn-sm btn-success" %>
-        <%= link_to "退会する", public_customers_withdraw_path(@customer), method: :delete, class:"btn btn-sm btn-danger" %>
+        <%= link_to "退会する", public_customers_withdraw_path(current_customer), method: :patch, class:"btn btn-sm btn-danger" %>
       </tr>
     </div>
   </div>

@@ -21,10 +21,10 @@ class Public::CustomersController < ApplicationController
   end
 
   def withdraw
-    @customer = Customer.find(params[:id])
-    if @customer.withdraw
-      redirect_to public_root_path
-    end
+    @customer = current_customer
+    @customer.update(is_deleted: true)
+    reset_session
+    redirect_to public_root_path
   end
 
   private

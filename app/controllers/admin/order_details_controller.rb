@@ -9,6 +9,11 @@ class Admin::OrdersDetailsController < ApplicationController
     end
   end
 
+
+  def subtotal
+    item.with_tax_price * amount
+  end
+
   private
   def order_detail_params
     params.require(:order_detail).permit(:item_id, :order_id, :price, :amount, :making_status)
