@@ -13,9 +13,9 @@ Rails.application.routes.draw do
     sessions: "admin/sessions"
   }
 
+  root to: "public/homes#top"
 
   namespace :public do
-    root to: "homes#top"
     get "/about" =>"homes#about"
     resources :items, only: [:index, :show]
     delete "/cart_items/destroy_all" => "cart_items#destroy_all"
