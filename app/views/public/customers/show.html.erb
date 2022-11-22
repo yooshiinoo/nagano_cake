@@ -1,8 +1,10 @@
 <div class="container">
   <div class="row">
     <h2>マイページ</h2>
+  </div>
+  <div class="row">
     <div class="col">
-      <h2>登録情報</h2><%= link_to "編集する", public_customers_information_edit_path(@customer), class:"btn btn-sm btn-success" %>
+      <h4><stong>登録情報</stong></h4><%= link_to "編集する", public_customers_information_edit_path(@customer), class:"btn btn-sm btn-success" %><br>
       <table class="table">
           <tr>
             <th>氏名</th>
@@ -32,9 +34,11 @@
     </div>
   </div>
   <div class="row">
-    <h2>配送先</h2>
-    <%= link_to "一覧を見る", public_addresses_path(current_customer), class:"btn btn-sm btn-success" %>
-    <h2>注文履歴</h2>
-    <%= link_to "一覧を見る", public_orders_path(current_customer), class:"btn btn-sm btn-success" %>
+    <h4><stong>配送先</stong></h4>
+    <%= link_to "一覧を見る", public_addresses_path(current_customer), class:"btn btn-sm btn-primary" %>
+  </div>
+  <div class="row">
+    <h4><stong>注文履歴</stong></h4>
+    <%= link_to "一覧を見る", public_orders_path(current_customer), class:"btn btn-sm btn-primary" %>
   </div>
 </div>
