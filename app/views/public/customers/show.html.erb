@@ -3,31 +3,31 @@
     <h2>マイページ</h2>
   </div>
   <div class="row">
-    <div class="col">
+    <div class="col-md-8">
       <h4><stong>登録情報</stong></h4><%= link_to "編集する", public_customers_information_edit_path(@customer), class:"btn btn-sm btn-success" %><br>
-      <table class="table">
+      <table border="1">
           <tr>
-            <th>氏名</th>
+            <th bgcolor="#EEEEEE" >氏名</th>
             <td><%= @customer.last_name %>  <%= @customer.first_name %></td>
           </tr>
           <tr>
-            <th>カナ</th>
+            <th bgcolor="#EEEEEE" >カナ</th>
             <td><%= @customer.last_name_kana %>  <%= @customer.first_name_kana %></td>
           </tr>
           <tr>
-            <th>郵便番号</th>
+            <th bgcolor="#EEEEEE" >郵便番号</th>
             <td><%= @customer.postal_code %></td>
           </tr>
           <tr>
-            <th>住所</th>
+            <th bgcolor="#EEEEEE" >住所</th>
             <td><%= @customer.address %></td>
           </tr>
           <tr>
-            <th>電話番号</th>
+            <th bgcolor="#EEEEEE" >電話番号</th>
             <td><%= @customer.telephone_number %></td>
           </tr>
           <tr>
-            <th>メールアドレス</th>
+            <th bgcolor="#EEEEEE" >メールアドレス</th>
             <td><%= @customer.email %></td>
           </tr>
       </table>

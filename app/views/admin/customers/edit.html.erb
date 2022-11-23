@@ -2,7 +2,7 @@
   <div class="row">
     <h2><%= @customer.full_name %>さんの会員情報編集</h2>
     <table class="table">
-      <%= form_with model: @customer, url:admin_customer_path do |f| %>
+      <%= form_with model: @customer, url:admin_customer_path, method: :patch do |f| %>
         <div class="form-group">
           <tr>
             <th>会員ID</th>
