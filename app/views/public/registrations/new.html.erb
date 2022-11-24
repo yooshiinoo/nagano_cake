@@ -1,4 +1,4 @@
-<div class="container"></div>
+<div class="container">
   <div class="row">
     <div class="col-md-10">
       <h2>新規会員登録</h2>
@@ -71,15 +71,19 @@
           </div>
         </table>
         <div class="actions">
-          <%= f.submit "新規登録" %>
+          <%= f.submit "新規登録", class:"btn btn-success" %>
   　　　　　</div>
       <% end %>
     </div>
   </div>
   <div class="row">
     <h2>既に登録済みの方</h2>
-    <p>
-      <%= link_to "こちら", new_customer_session_path %>からログインしてください。
-    </p>
+  </div>
+  <div class="row">
+    <div class="col-md-5">
+      <p>
+        <%= link_to "こちら", new_customer_session_path %> からログインしてください。
+      </p>
+    </div>
   </div>
 </div>

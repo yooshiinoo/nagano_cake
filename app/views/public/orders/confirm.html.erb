@@ -2,7 +2,7 @@
   <h2>注文情報確認</h2>
   <div class="row">
     <div class="col-xs-9">
-      <table border="1">
+      <table class="table table-bordered">
         <thead>
           <tr>
             <th bgcolor="#EEEEEE" >商品名</th>
@@ -34,7 +34,7 @@
       </table>
     </div>
     <div class="col-xs-3 offset-md-1">
-      <table  border="1">
+      <table class="table table-bordered">
         <tr>
           <th bgcolor="#EEEEEE" >送料</th>
           <td><%= @order.shipping_cost %></td>
@@ -54,10 +54,18 @@
     </div>
   </div>
   <div class="row">
-    <h5><stong>支払方法</stong></h5><%= @order.payment_method %>
-  </div>
-  <div class="row">
-    <h5><stong>お届け先</stong></h5><%= "〒#{@order.postal_code} #{@order.address}" %><br><%= "#{@order.name}" %>
+    <div class="col-md-12">
+      <table>
+      <tr>
+        <th><strong>支払方法</strong></th>
+        <td><%= @order.payment_method %></td>
+      </tr>
+      <tr>
+        <th><strong>お届け先</strong></th>
+        <td><%= "〒#{@order.postal_code} #{@order.address}" %><br><%= "#{@order.name}" %></td>
+      </tr>
+    </table>
+    </div>
   </div>
   <div class="row">
     <%= form_with model: @order, url: public_orders_path, method: :post do |f| %>

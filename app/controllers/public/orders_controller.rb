@@ -40,7 +40,7 @@ class Public::OrdersController < ApplicationController
   end
 
   def create
-    @order = current_customer.order.new(order_params)
+    @order = Order.new(order_params)
     @order.save
 
     if params[:order][:ship] == "1"

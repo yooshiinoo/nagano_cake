@@ -1,33 +1,33 @@
 <div class="container">
+  <h2>ログイン</h2>
   <div class="row">
-    <h2>ログイン</h2>
     <div class="col">
-      <h3>会員の方はこちらからログイン</h3>
+      <h4>会員の方はこちらからログイン</h4>
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-        <div class="field">
-          <tr>
-            <th><%= f.label "メールアドレス" %></th>
-            <td><%= f.email_field :email, autofocus: true, autocomplete: "email" %></td>
-          </tr>
-        </div>
-        <div class="field">
-          <tr>
-            <th><%= f.label "パスワード" %></th>
-            <td><%= f.password_field :password, autocomplete: "current-password" %></td>
-          </tr>
-        </div>
-        <div class="actions">
-          <input type="submit" name="commit" value="ログイン" class="btn btn-sm btn-primary" data-disable-with="ログイン">
-        </div>
+        <table>
+          <div class="field">
+            <tr>
+              <th><%= f.label "メールアドレス" %></th>
+              <td><%= f.email_field :email, autofocus: true, autocomplete: "email" %></td>
+            </tr>
+          </div>
+          <div class="field">
+            <tr>
+              <th><%= f.label "パスワード" %></th>
+              <td><%= f.password_field :password, autocomplete: "current-password" %></td>
+            </tr>
+          </div>
+        </table>
+        <%= f.submit "ログイン", class:"btn btn-sm btn-primary" %>
       <% end %>
     </div>
-    <div class="row">
-      <div class="col">
-        <h2>会員登録が済みでないの方</h2>
-        <p>
-          <%= link_to "こちら", new_customer_registration_path %>から新規登録を行ってください。
-        </p>
-      </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <h2>会員登録が済みでないの方</h2>
+      <p>
+        <%= link_to "こちら", new_customer_registration_path %> から新規登録を行ってください。
+      </p>
     </div>
   </div>
 </div>
