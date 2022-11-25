@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="ja" class="h-100">
   <head>
     <script src="https://kit.fontawesome.com/20c1341cb6.js" crossorigin="anonymous"></script>
     <title>NaganoCake</title>
@@ -11,9 +11,9 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
-    <header>
-      <nav class="navbar navbar-expand-lg navbar-dark bg-white">
+  <body class="d-flex flex-column h-100">
+    <header class="border-bottom border-dark">
+      <nav class="navbar navbar-expand-lg navbar-light bg-white p-4">
         <div class="container">
           <% if admin_signed_in? %>
             <a>
@@ -101,10 +101,9 @@
       </nav>
     </header>
     <%= yield %>
-    <footer>
-      <div class="container">
-
-      </div>
+    <footer class="border-top border-dark mt-auto py-2 text-center">
+      <nav class="navbar navbar-expand-lg navbar-light bg-white p-4"></nav>
+      <div class="container"></div>
     </footer>
   </body>
 </html>

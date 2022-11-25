@@ -1,22 +1,27 @@
 <div class="container">
+  <h2>ジャンル一覧・追加</h2>
   <div class="row">
-    <h2>ジャンル一覧・追加</h2>
-    <%= form_with model: @genre, url:admin_genres_path do |f| %>
+    <div class="col-md-10">
+      <%= form_with model: @genre, url:admin_genres_path do |f| %>
       <div class="form-group">
         <tr>
           <th><%= f.label "ジャンル名" %></th>
-          <th><%= f.text_field :name, class: "col-xs-12" %></th>
+          <th><%= f.text_field :name, placeholder:"ジャンル名" %></th>
           <th>
-            <input type="submit" name="commit" value="新規登録" class="btn btn-success" data-disable-with="新規登録">
+            <%= f.submit "新規登録", class:"btn btn-success" %>
           </th>
         </tr>
       </div>
     <% end %>
-    <table class="table table-hover table-inverse">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-5">
+      <table class="table">
       <thead>
         <tr>
-          <th>ジャンル</th>
-          <th colspan="3"></th>
+          <th bgcolor="#EEEEEE" >ジャンル</th>
+          <th bgcolor="#EEEEEE" colspan="3"></th>
         </tr>
       </thead>
       <tbody>
@@ -32,5 +37,6 @@
         <% end %>
       </tbody>
     </table>
+    </div>
   </div>
 </div>
