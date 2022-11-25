@@ -1,11 +1,11 @@
 <div class="container">
   <div class="row">
     <h2>注文履歴詳細</h2>
-    <div class="col-xs-12">
-      <table class="table">
+    <div class="col-md-10">
+      <table class="table table-borderless">
         <% @order.each do |order| %>
           <tr>
-            <th>購入者</th>
+            <th><strong>購入者</strong></th>
             <td>
               <%= link_to admin_customer_path(@orders), class: "nav-link text-dark" do %>
                 <%= full_name(order.customer) %>
@@ -13,21 +13,21 @@
             </td>
           </tr>
           <tr>
-            <th>注文日</th>
+            <th><strong>注文日</strong></th>
             <td><%= order.created_at.strftime("%Y-%m-%d %H:%M:%S") %></td>
           </tr>
           <tr>
-            <th>配送先</th>
+            <th><strong>配送先</strong></th>
             <td>〒<%= full_address(order) %></td>
           </tr>
           <tr>
-            <th>支払方法</th>
+            <th><strong>支払方法</strong></th>
             <td><%= order.payment_method %></td>
           </tr>
           <tr>
-            <th>注文ステータス</th>
+            <th><strong>注文ステータス</strong></th>
             <td>
-              <%= from_with model: @order, url:admin_order_path do |f| %>
+              <%= from_with model: @order, url:admin_order_path, method: :patch do |f| %>
                 <%= f.select :status, Order.statuses.keys,class:"status" %>
                 <%= f.submit "更新", class:"btn btn-sm btn-success"%>
               <% end %>
@@ -38,15 +38,15 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-xs-8">
-      <table class="table">
+    <div class="col-md-8">
+      <table class="table table-borderless">
         <thead>
           <tr>
-            <th>商品名</th>
-            <th>単価(税込)</th>
-            <th>数量</th>
-            <th>小計</th>
-            <th>制作ステータス</th>
+            <th bgcolor="#EEEEEE" ><strong>商品名</strong></th>
+            <th bgcolor="#EEEEEE" ><strong>単価(税込)</strong></th>
+            <th bgcolor="#EEEEEE" ><strong>数量</strong></th>
+            <th bgcolor="#EEEEEE" ><strong>小計</strong></th>
+            <th bgcolor="#EEEEEE" ><strong>制作ステータス</strong></th>
           </tr>
         </thead>
         <tbody>
@@ -57,7 +57,7 @@
               <td><%= order_detail.item.count %></td>
               <td><%= order_detail.subtotal %></td>
               <td>
-                <%= from_with model: @order_detail, url:admin_order_path do |f| %>
+                <%= from_with model: @order_detail, url:admin_order_path, method: :patch do |f| %>
                   <%= f.select :making_status, OrderDetail.making_statuses.keys,class:"making_status" %>
                   <%= f.submit "更新", class:"btn btn-sm btn-success"%>
                 <% end %>
@@ -66,23 +66,24 @@
         </tbody>
       </table>
     </div>
-    <div class="col-xs-3 offset-1">
-      <table class="table">
+    <div class="col-md-3 offset-1">
+      <table class="table table-borderless">
           <tr>
-            <th>商品合計</th>
+            <th><strong>商品合計</strong></th>
             <td>
               <% @total += order_detail.subtotal %>
               <%= @total %>円
             </td>
           </tr>
           <tr>
-            <th>送料</th>
+            <th><strong>送料</strong></th>
             <td><%= @order.shipping_cost %></td>
           </tr>
           <tr>
-            <th>請求金額合計</th>
+            <th><strong>請求金額合計</strong></th>
             <td>
-              <%= @total + @order.shipping_cost %>
+              <% @order.total_payment = @order.shipping_cost + @total %>
+              <%= @order.total_payment %>
             </td>
           </tr>
         <% end %>

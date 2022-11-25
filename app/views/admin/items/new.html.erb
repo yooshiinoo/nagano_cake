@@ -1,8 +1,10 @@
 <div class="container">
+  <h2>商品新規登録</h2>
   <div class="row">
-    <h2>商品新規登録</h2>
-    <%= form_with model: @item, url:admin_items_path do |f| %>
-      <div class="form-group">
+    <div class="col-md-5.5 mx-auto">
+      <%= form_with model: @item, url:admin_items_path do |f| %>
+      <table>
+        <div class="form-group">
         <tr>
           <th><%= f.label "商品画像" %></th>
           <td><%= f.file_field :image, placeholder: "image", accept: "image/*" %></td>
@@ -14,10 +16,10 @@
           <td><%= f.text_field :name, autofocus: true, placeholder:"商品名"%></td>
         </tr>
       </div>
-      <div class="form-group">
+      <div class="form-group d-flex align-items-start">
         <tr>
           <th><%= f.label "商品説明" %></th>
-          <td><%= f.text_field :introduction, autofocus: true, placeholder:"ここに説明文を記述します"%></td>
+          <td><%= f.text_area :introduction, :rows => "3", autofocus: true, placeholder:"ここに説明文を記述します" %></td>
         </tr>
       </div>
       <div class="form-group">
@@ -43,10 +45,12 @@
           </td>
         </tr>
       </div>
+      </table>
       <div class="form-group">
-        <input type="submit" name="commit" value="新規登録" class="btn btn-success" data-disable-with="新規登録">
+        <%= f.submit "新規登録", class: "btn btn-success" %>
       </div>
     <% end %>
+    </div>
   </div>
 </div>
 

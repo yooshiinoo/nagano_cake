@@ -1,30 +1,32 @@
 <div class="container">
+  <h2>注文履歴一覧</h2>
   <div class="row">
-    <h2>注文履歴一覧</h2>
-    <table class="table table-borderless">
-      <thead>
-        <tr>
-          <th bgcolor="#EEEEEE">購入日時</th>
-          <th bgcolor="#EEEEEE">購入者</th>
-          <th bgcolor="#EEEEEE">注文個数</th>
-          <th bgcolor="#EEEEEE">注文ステータス</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @orders.each do |order| %>
+    <div class="col-md-8 mx-auto">
+      <table class="table">
+        <thead>
           <tr>
-            <td>
-              <%= link_to admin_order_path(@orders), class: "nav-link text-dark" do %>
-                <%= order.created_at.strftime("%Y-%m-%d %H:%M:%S") %>
-              <% end %>
-            </td>
-            <td><%= full_name(order.customer) %></td>
-            <td><%= order.order_details.count %></td>
-            <td><%= order.status %></td>
+            <th bgcolor="#EEEEEE">購入日時</th>
+            <th bgcolor="#EEEEEE">購入者</th>
+            <th bgcolor="#EEEEEE">注文個数</th>
+            <th bgcolor="#EEEEEE">注文ステータス</th>
           </tr>
-        <% end %>
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+          <% @orders.each do |order| %>
+            <tr>
+              <td>
+                <%= link_to admin_order_path(@orders), class: "nav-link text-dark" do %>
+                  <%= order.created_at.strftime("%Y-%m-%d %H:%M:%S") %>
+                <% end %>
+              </td>
+              <td><%= full_name(order.customer) %></td>
+              <td><%= order.order_details.count %></td>
+              <td><%= order.status %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
   </div>
   <%= paginate @orders %>
 </div>
