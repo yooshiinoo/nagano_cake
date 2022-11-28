@@ -3,37 +3,35 @@
     <h2>注文履歴詳細</h2>
     <div class="col-md-10">
       <table class="table table-borderless">
-        <% @order.each do |order| %>
-          <tr>
-            <th><strong>購入者</strong></th>
-            <td>
-              <%= link_to admin_customer_path(@orders), class: "nav-link text-dark" do %>
-                <%= full_name(order.customer) %>
-              <% end %>
-            </td>
-          </tr>
-          <tr>
-            <th><strong>注文日</strong></th>
-            <td><%= order.created_at.strftime("%Y-%m-%d %H:%M:%S") %></td>
-          </tr>
-          <tr>
-            <th><strong>配送先</strong></th>
-            <td>〒<%= full_address(order) %></td>
-          </tr>
-          <tr>
-            <th><strong>支払方法</strong></th>
-            <td><%= order.payment_method %></td>
-          </tr>
-          <tr>
-            <th><strong>注文ステータス</strong></th>
-            <td>
-              <%= from_with model: @order, url:admin_order_path, method: :patch do |f| %>
-                <%= f.select :status, Order.statuses.keys,class:"status" %>
-                <%= f.submit "更新", class:"btn btn-sm btn-success"%>
-              <% end %>
-            </td>
-          </tr>
-        <% end %>
+        <tr>
+          <th><strong>購入者</strong></th>
+          <td>
+            <%= link_to admin_customer_path(@customer.id), class: "nav-link text-dark" do %>
+              <%= @order.name %>
+            <% end %>
+          </td>
+        </tr>
+        <tr>
+          <th><strong>注文日</strong></th>
+          <td><%= @order.created_at.strftime("%Y-%m-%d %H:%M:%S") %></td>
+        </tr>
+        <tr>
+          <th><strong>配送先</strong></th>
+          <td>〒<%= @order.full_address %></td>
+        </tr>
+        <tr>
+          <th><strong>支払方法</strong></th>
+          <td><%= @order.payment_method %></td>
+        </tr>
+        <tr>
+          <th><strong>注文ステータス</strong></th>
+          <td>
+            <%= form_with model: @order, url:admin_order_path, method: :patch do |f| %>
+              <%= f.select :status, Order.statuses.keys,class:"status" %>
+              <%= f.submit "更新", class:"btn btn-sm btn-success"%>
+            <% end %>
+          </td>
+        </tr>
       </table>
     </div>
   </div>
@@ -53,11 +51,11 @@
           <% @order.order_details.each do |order_detail| %>
             <tr>
               <td><%= order_detail.item.name %></td>
-              <td><%= order_detail.with_tax_price %></td>
-              <td><%= order_detail.item.count %></td>
+              <td><%= order_detail.item.with_tax_price %></td>
+              <td><%= order_detail.amount %></td>
               <td><%= order_detail.subtotal %></td>
               <td>
-                <%= from_with model: @order_detail, url:admin_order_path, method: :patch do |f| %>
+                <%= form_with model: @order_detail, url:admin_order_detail_path, method: :patch do |f| %>
                   <%= f.select :making_status, OrderDetail.making_statuses.keys,class:"making_status" %>
                   <%= f.submit "更新", class:"btn btn-sm btn-success"%>
                 <% end %>

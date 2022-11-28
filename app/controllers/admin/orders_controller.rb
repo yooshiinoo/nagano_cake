@@ -3,19 +3,15 @@ class Admin::OrdersController < ApplicationController
     @order = Order.find(params[:id])
     @orders = Order.all
     @total = 0
+    @customer = @order.customer
   end
 
   def update
     @order = Order.find(params[:id])
     if @order.update(order_params)
+      @order.order_detail.update_all(status: 1) if @order.status == 1
       redirect_to admin_order_path(@order)
-    else
-      render :root
     end
-  end
-
-  def with_tax_price
-    (price * 1.1).floor
   end
 
   def subtotal

@@ -1,7 +1,7 @@
 <div class="container">
   <h2>ログイン</h2>
   <div class="row">
-    <div class="col">
+    <div class="col-md-5 mx-auto">
       <h4>会員の方はこちらからログイン</h4>
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
         <table>
@@ -23,8 +23,8 @@
     </div>
   </div>
   <div class="row">
-    <div class="col">
-      <h2>会員登録が済みでないの方</h2>
+    <div class="col-md-5 mx-auto">
+      <h4>会員登録が済みでないの方</h4>
       <p>
         <%= link_to "こちら", new_customer_registration_path %> から新規登録を行ってください。
       </p>
