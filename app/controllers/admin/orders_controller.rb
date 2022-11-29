@@ -8,11 +8,14 @@ class Admin::OrdersController < ApplicationController
 
   def update
     @order = Order.find(params[:id])
+    @order_details = OrderDetail.where(order_id: params[:id])
     if @order.update(order_params)
-      @order.order_detail.update_all(status: 1) if @order.status == 1
-      redirect_to admin_order_path(@order)
+       @order_details.update_all(making_status: 1) if @order.status == "payment_confirmation"
     end
+    redirect_to admin_order_path(@order)
   end
+  
+
 
   def subtotal
     item.with_tax_price * amount

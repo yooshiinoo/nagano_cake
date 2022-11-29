@@ -7,7 +7,7 @@
           <th><strong>購入者</strong></th>
           <td>
             <%= link_to admin_customer_path(@customer.id), class: "nav-link text-dark" do %>
-              <%= @order.name %>
+              <%= @order.customer.full_name %>
             <% end %>
           </td>
         </tr>
@@ -21,13 +21,13 @@
         </tr>
         <tr>
           <th><strong>支払方法</strong></th>
-          <td><%= @order.payment_method %></td>
+          <td><%= @order.payment_method_i18n %></td>
         </tr>
         <tr>
           <th><strong>注文ステータス</strong></th>
           <td>
             <%= form_with model: @order, url:admin_order_path, method: :patch do |f| %>
-              <%= f.select :status, Order.statuses.keys,class:"status" %>
+              <%= f.select :status, Order.statuses.keys.map{|k| [I18n.t("enums.order.status.#{k}"), k]} %>
               <%= f.submit "更新", class:"btn btn-sm btn-success"%>
             <% end %>
           </td>
@@ -56,7 +56,7 @@
               <td><%= order_detail.subtotal %></td>
               <td>
                 <%= form_with model: @order_detail, url:admin_order_detail_path, method: :patch do |f| %>
-                  <%= f.select :making_status, OrderDetail.making_statuses.keys,class:"making_status" %>
+                  <%= f.select :making_status, OrderDetail.making_statuses.keys.map{|k| [I18n.t("enums.order_detail.making_status.#{k}"), k]} %>
                   <%= f.submit "更新", class:"btn btn-sm btn-success"%>
                 <% end %>
               </td>

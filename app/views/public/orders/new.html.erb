@@ -6,11 +6,11 @@
               <h5><strong>支払方法</strong></h5>
               <div class="field">
                   <%= f.radio_button :payment_method, :credit_card, checked: true %>
-                  <%= f.label :credit_card %>
+                  <%= f.label :credit_card, "クレジットカード" %>
               </div>
               <div class="field">
                   <%= f.radio_button :payment_method, :transfer %>
-                  <%= f.label :transfer %>
+                  <%= f.label :transfer, "銀行振込" %>
               </div>
               <h5><strong>お届け</strong></h5>
               <div class="field">
